@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Nav = () => {
+const navbar = () => {
   return (
     <>
       <nav className="my-5 h-10 w-full">
@@ -32,4 +32,4 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export default navbar;
