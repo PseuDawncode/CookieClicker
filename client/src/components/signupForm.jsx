@@ -1,18 +1,20 @@
 //To create a new account
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const signup = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState([]);
   const [isRegistered, setIsRegistered] = useState(false);
+  const navigate = useNavigate();
+
   // To store username and password in localstorage
   function doRegistration() {
     localStorage.setItem("StoredUsername", username);
     localStorage.setItem("StoredPassword", password);
     setIsRegistered(true);
-    console.log("register success");
+    navigate("/login");
   }
 
   // To validate the password and username

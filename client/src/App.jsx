@@ -6,7 +6,7 @@ import Nav from "./components/navbar";
 import Home from "./pages/home";
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [loggedInUsername, setLoggedInUsername] = useState(""); // To pass username to Nav
+  const [loggedInUsername, setLoggedInUsername] = useState(""); 
 
   const handleLoginSuccess = (username) => {
     setLoggedIn(true);

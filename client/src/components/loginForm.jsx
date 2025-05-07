@@ -7,7 +7,7 @@ const login = ({ onLoginSuccess }) => {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState([]);
   const navigate = useNavigate();
-  
+
   function handleLogin(event) {
     event.preventDefault();
     const usernameFromStorage = localStorage.getItem("StoredUsername");
@@ -21,8 +21,8 @@ const login = ({ onLoginSuccess }) => {
       setErrorMessage(["Password is incorrect, Try again"]);
       setPassword("");
     } else {
-      onLoginSuccess(username); // Call the function passed from App with the logged-in username
-      navigate("/"); // Redirect to home after successful login
+      onLoginSuccess(username);
+      navigate("/"); 
     }
   }
 
