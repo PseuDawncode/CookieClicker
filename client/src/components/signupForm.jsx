@@ -5,15 +5,65 @@ const signup = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState(false);
-  function handleRegister() {
-    try {
-      console.log("submitted");
-      console.log({ username });
-      console.log({ password });
-      console.log({ confirmPassword });
-    } catch (error) {
-      setErrorMessage(error);
+  const [errorMessage, setErrorMessage] = useState([]);
+  const [isRegistered, setIsRegistered] = useState(false);
+  // To store username and password in localstorage
+  function doRegistration() {
+    localStorage.setItem("StoredUsername", username);
+    localStorage.setItem("StoredPassword", password);
+    setIsRegistered(true);
+    console.log("register success");
+  }
+
+  // To validate the password and username
+  const validatePassword = (passsword, username) => {
+    const newErrors = [];
+    // Check for minimum length
+    if (passsword.length < 8) {
+      newErrors.push("Password must be at least 8 characters long.");
+    }
+
+    // Check for at least one uppercase letter
+    if (!/[A-Z]/.test(passsword)) {
+      newErrors.push("Password must contain at least one uppercase letter.");
+    }
+
+    // Check for at least one number
+    if (!/[0-9]/.test(passsword)) {
+      newErrors.push("Password must contain at least one number.");
+    }
+
+    // Check for at least one special character (you can customize this regex)
+    if (!/[^a-zA-Z0-9\s]/.test(passsword)) {
+      newErrors.push(
+        "Password must contain at least one special character (e.g., !@#$%^&*)."
+      );
+    }
+
+    // Check if password is not the username (case-insensitive)
+    if (passsword.toLowerCase() === username.toLowerCase() && username) {
+      newErrors.push("Password cannot be the same as your username.");
+    }
+    setErrorMessage(newErrors);
+    return newErrors.length === 0;
+  };
+
+  function handleRegister(event) {
+    event.preventDefault();
+    setErrorMessage([]);
+    if (password !== confirmPassword) {
+      setErrorMessage([
+        "Password and confirm passwords are not the same, Try again",
+      ]);
+      setPassword("");
+      setConfirmPassword("");
+    } else {
+      if (validatePassword(password, username)) {
+        doRegistration();
+      } else {
+        setPassword("");
+        setConfirmPassword("");
+      }
     }
   }
   return (
@@ -21,17 +71,21 @@ const signup = () => {
       <div className="flex flex-row flex-wrap justify-center items-center">
         <div className="w-1/3 h-2/3 flex-row m-20 p-10 border-2 rounded-2xl">
           <h2 className="text-2xl font-bold text-center">Register</h2>
-          {errorMessage && (
-            <div className="text-sm text-red-500">{errorMessage}</div>
+          {errorMessage.length > 0 && (
+            <div className="text-sm text-red-500">
+              {errorMessage.map((error, index) => (
+                <div key={index}>{error}</div>
+              ))}
+            </div>
           )}
-          <form action={handleRegister}>
+          <form onSubmit={handleRegister}>
             <label htmlFor="username" className="block mt-2">
               Username
             </label>
             <input
               required
               autoFocus
-              type="text"
+              type="email"
               name="username"
               id="username"
               placeholder="Type your email"
