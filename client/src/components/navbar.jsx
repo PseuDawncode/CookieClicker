@@ -1,5 +1,5 @@
 //For Navigation Bar
-import { useState, useEffect } from 'react';
+import React from 'react';
 
 
 const Navbar = ({ username, onLogout }) => {
@@ -12,4 +12,6 @@ const Navbar = ({ username, onLogout }) => {
         </div>
       </nav>
     );
-  };
+  }
+
+  export default Navbar;
