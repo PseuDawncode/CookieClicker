@@ -1,21 +1,14 @@
 //To create a new account
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Avatar from "./profileAvatar";
 const signup = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState([]);
-  const [isRegistered, setIsRegistered] = useState(false);
+  const [selectedAvatar, setSelectedAvatar] = useState(null);
   const navigate = useNavigate();
-
-  // To store username and password in localstorage
-  function doRegistration() {
-    localStorage.setItem("StoredUsername", username);
-    localStorage.setItem("StoredPassword", password);
-    setIsRegistered(true);
-    navigate("/login");
-  }
 
   // To validate the password and username
   const validatePassword = (passsword, username) => {
@@ -50,6 +43,10 @@ const signup = () => {
     return newErrors.length === 0;
   };
 
+  const handleAvatarSelect = (svgString) => {
+    setSelectedAvatar(svgString);
+  };
+
   function handleRegister(event) {
     event.preventDefault();
     setErrorMessage([]);
@@ -61,7 +58,18 @@ const signup = () => {
       setConfirmPassword("");
     } else {
       if (validatePassword(password, username)) {
-        doRegistration();
+        if (selectedAvatar) {
+          const userProfile = {
+            username: username,
+            password: password,
+            profilePic: selectedAvatar,
+          };
+          localStorage.setItem("userProfile", JSON.stringify(userProfile));
+          alert("Registration successful!");
+          navigate("/login");
+        } else {
+          setErrorMessage(["Please select an avatar."]);
+        }
       } else {
         setPassword("");
         setConfirmPassword("");
@@ -81,6 +89,7 @@ const signup = () => {
             </div>
           )}
           <form onSubmit={handleRegister}>
+            <Avatar onAvatarSelect={handleAvatarSelect} />
             <label htmlFor="username" className="block mt-2">
               Username
             </label>

@@ -2,10 +2,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const navbar = ({ loggedIn, username, onLogout }) => {
+const navbar = ({ loggedIn, username, profilePic, onLogout }) => {
   return (
     <nav className="bg-amber-800 p-8 flex justify-between items-center">
-      <h1 className="text-white text-3xl font-bold cursor-pointer">
+      <h1 className="flex text-white text-3xl font-bold cursor-pointer">
         {" "}
         <Link className="ml-9" to="/">
           Cookie Clicker
@@ -35,7 +35,13 @@ const navbar = ({ loggedIn, username, onLogout }) => {
 
       {loggedIn && (
         <div className="flex items-center gap-4">
-          <span className="text-yellow-300 text-lg">Welcome, {username}!</span>
+          <span className="text-yellow-300 text-lg hidden md:inline">
+            Welcome, {username}!{" "}
+          </span>
+          <span
+            dangerouslySetInnerHTML={{ __html: profilePic }}
+            className="md:w-24 md:h-24  w-15 h-15 "
+          ></span>
           <Link to="/">
             <button
               onClick={onLogout}
