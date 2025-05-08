@@ -4,13 +4,15 @@ import Login from "./components/loginForm";
 import Register from "./components/signupForm";
 import Nav from "./components/navbar";
 import Home from "./pages/home";
+
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [loggedInUsername, setLoggedInUsername] = useState(""); 
-
-  const handleLoginSuccess = (username) => {
+  const [loggedInUsername, setLoggedInUsername] = useState("");
+  const [pic, setPic] = useState(null);
+  const handleLoginSuccess = (username, profilePic) => {
     setLoggedIn(true);
     setLoggedInUsername(username);
+    setPic(profilePic);
   };
   const handleLogout = () => {
     setLoggedIn(false);
@@ -23,6 +25,7 @@ function App() {
         <Nav
           loggedIn={loggedIn}
           username={loggedInUsername}
+          profilePic={pic}
           onLogout={handleLogout}
         />
         <Routes>
@@ -32,7 +35,7 @@ function App() {
           </Route>
           <Route
             path="/login"
-            element={<Login onLoginSuccess={handleLoginSuccess} />}
+            element={<Login onLoginSuccess={handleLoginSuccess}  />}
           >
             {" "}
             Login{" "}

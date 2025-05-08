@@ -10,19 +10,21 @@ const login = ({ onLoginSuccess }) => {
 
   function handleLogin(event) {
     event.preventDefault();
-    const usernameFromStorage = localStorage.getItem("StoredUsername");
-    const passwordFromStorage = localStorage.getItem("StoredPassword");
+    const dataFromStorage = JSON.parse(localStorage.getItem("userProfile"));
     setErrorMessage([]);
-    if (username !== usernameFromStorage) {
+    if (username !== dataFromStorage.username) {
       setErrorMessage(["Username is incorrect, Try again"]);
       setUsername("");
     }
-    if (password !== passwordFromStorage) {
+    if (password !== dataFromStorage.password) {
       setErrorMessage(["Password is incorrect, Try again"]);
       setPassword("");
-    } else {
-      onLoginSuccess(username);
-      navigate("/"); 
+    } else if (
+      username === dataFromStorage.username &&
+      password === dataFromStorage.password
+    ) {
+      onLoginSuccess(username, dataFromStorage.profilePic);
+      navigate("/");
     }
   }
 
