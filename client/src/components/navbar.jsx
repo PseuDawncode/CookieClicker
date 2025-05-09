@@ -1,8 +1,15 @@
 //For Navigation Bar
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import Music from "./music";
+import musicImage from "../assets/images/music.png";
 const navbar = ({ loggedIn, username, profilePic, onLogout }) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const startMusic = () => {
+    setIsPlaying(true);
+  };
+
   return (
     <nav className="bg-amber-800 p-8 flex justify-between items-center">
       <h1 className="flex text-white text-3xl font-bold cursor-pointer">
@@ -11,7 +18,16 @@ const navbar = ({ loggedIn, username, profilePic, onLogout }) => {
           Cookie Clicker
         </Link>
       </h1>
-
+      {!isPlaying && (
+        <button className="cursor-pointer" onClick={startMusic}>
+          <img
+            src={musicImage}
+            alt="music image"
+            className="w-10 h-10 rounded-4xl"
+          />{" "}
+        </button>
+      )}
+      {isPlaying && <Music soundId={699618} shouldLoop={true} />}
       {!loggedIn && (
         <div className="flex items-center gap-4">
           <Link to="/login">
