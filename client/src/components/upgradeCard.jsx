@@ -11,8 +11,8 @@ const UpgradeCard = ({ title, description, cost, cookies, onPurchase }) => {
   };
 
   return (
-    <div className="bg-gray-100 rounded-xl shadow p-4 flex items-center justify-between mb-4 w-full max-w-xl mx-auto">
-      <div>
+    <div className="bg-gray-100 rounded-xl shadow p-4 flex flex-col md:flex-row items-center justify-between mb-4 w-full max-w-xl mx-auto">
+      <div className="text-center md:text-left">
         <h3 className="text-lg font-bold text-orange-800">{title}</h3>
         <p className="text-sm text-gray-700">{description}</p>
       </div>
