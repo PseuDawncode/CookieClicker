@@ -11,8 +11,8 @@ const navbar = ({ loggedIn, username, profilePic, onLogout }) => {
   };
 
   return (
-    <nav className="bg-amber-800 p-8 flex justify-between items-center">
-      <h1 className="flex text-white text-3xl font-bold cursor-pointer">
+    <nav className="bg-amber-800 sm:p-4 md:p-8 flex justify-between items-center">
+      <h1 className="flex text-white sm:text-2xl md:text-3xl font-bold cursor-pointer">
         {" "}
         <Link className="ml-9" to="/">
           Cookie Clicker
@@ -32,7 +32,7 @@ const navbar = ({ loggedIn, username, profilePic, onLogout }) => {
         <div className="flex items-center gap-4">
           <Link to="/login">
             <button
-              className="px-4 py-2 w-30 rounded text-white cursor-pointer"
+              className="px-4 py-2 sm:w-23 md:w-30 rounded text-white cursor-pointer"
               style={{ backgroundColor: "#D27D2D" }}
             >
               Login
@@ -40,7 +40,7 @@ const navbar = ({ loggedIn, username, profilePic, onLogout }) => {
           </Link>
           <Link to="/register">
             <button
-              className="px-4 py-2  w-30 rounded text-white cursor-pointer"
+              className="px-4 py-2 sm:w-23 md:w-30 rounded text-white cursor-pointer"
               style={{ backgroundColor: "#D27D2D" }}
             >
               Register
@@ -51,7 +51,7 @@ const navbar = ({ loggedIn, username, profilePic, onLogout }) => {
 
       {loggedIn && (
         <div className="flex items-center gap-4">
-          <span className="text-yellow-300 text-lg hidden md:inline">
+          <span className="text-yellow-300 text-1g hidden md:inline">
             Welcome, {username}!{" "}
           </span>
           <span
@@ -61,7 +61,7 @@ const navbar = ({ loggedIn, username, profilePic, onLogout }) => {
           <Link to="/">
             <button
               onClick={onLogout}
-              className="px-4 py-2  w-30 rounded text-white cursor-pointer"
+              className="px-4 py-2 sm:w-23 md:w-30 rounded text-white cursor-pointer"
               style={{ backgroundColor: "#D27D2D" }}
             >
               Logout
