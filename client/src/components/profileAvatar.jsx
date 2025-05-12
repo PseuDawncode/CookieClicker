@@ -39,25 +39,25 @@ const profileAvatar = ({ onAvatarSelect }) => {
   };
   return (
     <div className="flex flex-col items-center my-4">
-      <div className="grid grid-cols-3 gap-4 mt-4">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4">
         {avatarArray.map((svg, index) =>
           svg ? (
+          <div
+            key={index}
+            className={`relative rounded-full overflow-hidden shadow-md cursor-pointer
+            ${
+              avatarSelected === index
+                ? "border-2 border-black rounded-full"
+                : ""
+            }`}
+            onClick={() => handleAvatarClick(svg, index)}
+          >
             <div
-              key={index}
-              className={`relative rounded-full overflow-hidden shadow-md cursor-pointer
-              ${
-                avatarSelected === index
-                  ? "border-2 border-black rounded-full"
-                  : ""
-              }`}
-              onClick={() => handleAvatarClick(svg, index)}
-            >
-              <div
-                dangerouslySetInnerHTML={{ __html: svg }}
-                className="w-24 h-24 hover:opacity-60  hover:rounded-full "
-              />
-            </div>
-          ) : (
+              dangerouslySetInnerHTML={{ __html: svg }}
+              className="w-20 h-20 md:w-24 md:h-24 hover:opacity-60 hover:rounded-full"
+            />
+          </div>
+        ) : (
             <div key={index} className="text-center text-gray-500">
               Error loading avatar {index + 1}
             </div>
