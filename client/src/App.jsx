@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/loginForm";
 import Register from "./components/signupForm";
 import Nav from "./components/navbar";
 import Home from "./pages/home";
+import CookieGame from "./components/CookieGame";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(() => {
@@ -13,6 +14,7 @@ function App() {
     localStorage.getItem("loggedInUsername" || "")
   );
   const [pic, setPic] = useState(localStorage.getItem("profilePic") || null);
+
   const handleLoginSuccess = (username, profilePic) => {
     setLoggedIn(true);
     setLoggedInUsername(username);
@@ -21,13 +23,13 @@ function App() {
     localStorage.setItem("loggedInUsername", username);
     localStorage.setItem("profilePic", profilePic);
   };
+  
   const handleLogout = () => {
     setLoggedIn(false);
     setLoggedInUsername("");
     localStorage.removeItem("authToken");
     localStorage.removeItem("loggedInUsername");
     localStorage.removeItem("profilePic");
-    navigate("/login");
   };
 
   return (
@@ -40,7 +42,10 @@ function App() {
           onLogout={handleLogout}
         />
         <Routes>
-          <Route path="/" element={<Home loggedIn={loggedIn} />}>
+          <Route
+            path="/"
+            element={loggedIn ? <CookieGame /> : <Home loggedIn={loggedIn} />}
+          >
             {" "}
             Home{" "}
           </Route>

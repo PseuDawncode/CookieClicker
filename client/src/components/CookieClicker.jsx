@@ -2,7 +2,6 @@ import { useState } from "react";
 
 export default function CookieClicker({ onCookieClick, count }) {
   const [clicked, setClicked] = useState(false);
-  const navigate = useNavigate();
 
   const handleClick = () => {
     setClicked(true);

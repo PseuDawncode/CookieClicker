@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import CookieClicker from "../components/CookieClicker";
 const home = ({ loggedIn }) => {
   const navigate = useNavigate();
 
@@ -17,6 +18,7 @@ const home = ({ loggedIn }) => {
           <h1 className="sm:text-3xl md:text-5xl my-10 mx-4 text-center">
             Welcome to Game
           </h1>
+          <CookieClicker />
         </div>
       )}
     </>
