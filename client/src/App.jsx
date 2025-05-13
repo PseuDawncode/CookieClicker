@@ -29,13 +29,13 @@ function App() {
           onLogout={handleLogout}
         />
         <Routes>
-          <Route path="/" element={<Home />}>
+          <Route path="/" element={<Home loggedIn={loggedIn} />}>
             {" "}
             Home{" "}
           </Route>
           <Route
             path="/login"
-            element={<Login onLoginSuccess={handleLoginSuccess}  />}
+            element={<Login onLoginSuccess={handleLoginSuccess} />}
           >
             {" "}
             Login{" "}

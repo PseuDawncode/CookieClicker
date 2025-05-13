@@ -3,11 +3,12 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Music from "./music";
 import musicImage from "../assets/images/music.png";
+import noMusicImage from "../assets/images/nomusic.png";
 const navbar = ({ loggedIn, username, profilePic, onLogout }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const startMusic = () => {
-    setIsPlaying(true);
+    setIsPlaying(!isPlaying);
   };
 
   return (
@@ -18,11 +19,19 @@ const navbar = ({ loggedIn, username, profilePic, onLogout }) => {
           Cookie Clicker
         </Link>
       </h1>
-      {!isPlaying && (
+      {!isPlaying ? (
         <button className="cursor-pointer" onClick={startMusic}>
           <img
             src={musicImage}
             alt="music image"
+            className="w-10 h-10 rounded-4xl"
+          />{" "}
+        </button>
+      ) : (
+        <button className="cursor-pointer" onClick={startMusic}>
+          <img
+            src={noMusicImage}
+            alt="stop music image"
             className="w-10 h-10 rounded-4xl"
           />{" "}
         </button>
