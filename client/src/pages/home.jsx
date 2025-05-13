@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 const home = ({ loggedIn }) => {
-  console.log(loggedIn);
   const navigate = useNavigate();
 
   // Navigate to login if user is not loggedIn else to game

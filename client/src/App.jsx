@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/loginForm";
 import Register from "./components/signupForm";
@@ -6,17 +6,28 @@ import Nav from "./components/navbar";
 import Home from "./pages/home";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [loggedInUsername, setLoggedInUsername] = useState("");
-  const [pic, setPic] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(() => {
+    return localStorage.getItem("authToken") ? true : false;
+  });
+  const [loggedInUsername, setLoggedInUsername] = useState(
+    localStorage.getItem("loggedInUsername" || "")
+  );
+  const [pic, setPic] = useState(localStorage.getItem("profilePic") || null);
   const handleLoginSuccess = (username, profilePic) => {
     setLoggedIn(true);
     setLoggedInUsername(username);
     setPic(profilePic);
+    localStorage.setItem("authToken", "true");
+    localStorage.setItem("loggedInUsername", username);
+    localStorage.setItem("profilePic", profilePic);
   };
   const handleLogout = () => {
     setLoggedIn(false);
     setLoggedInUsername("");
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("loggedInUsername");
+    localStorage.removeItem("profilePic");
+    navigate("/login");
   };
 
   return (
