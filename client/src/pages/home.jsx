@@ -1,4 +1,5 @@
 import React from "react";
+import CookieClicker from "../components/CookieGame"
 
 const home = () => {
   return (
@@ -6,6 +7,8 @@ const home = () => {
       <h1 className="sm:text-3xl md:text-5xl my-10 mx-4 text-center">
         Welcome to Game
       </h1>
+      <CookieClicker/>
+ 
     </div>
   );
 };
