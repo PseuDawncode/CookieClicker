@@ -79,7 +79,7 @@ const signup = () => {
   return (
     <>
       <div className="flex flex-row flex-wrap justify-center items-center">
-        <div className="w-1/3 h-2/3 flex-row m-20 p-10 border-2 rounded-2xl">
+        <div className="md:w-1/3 h-2/3 flex-row m-20 p-10 border-2 rounded-2xl">
           <h2 className="text-2xl font-bold text-center">Register</h2>
           {errorMessage.length > 0 && (
             <div className="text-sm text-red-500">

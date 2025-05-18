@@ -12,6 +12,11 @@ const login = ({ onLoginSuccess }) => {
     event.preventDefault();
     const dataFromStorage = JSON.parse(localStorage.getItem("userProfile"));
     setErrorMessage([]);
+    if (!dataFromStorage) {
+      setErrorMessage(["No user profile found. Please register."]);
+      navigate("/register");
+      return;
+    }
     if (username !== dataFromStorage.username) {
       setErrorMessage(["Username is incorrect, Try again"]);
       setUsername("");
