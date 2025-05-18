@@ -54,7 +54,7 @@ const profileAvatar = ({ onAvatarSelect }) => {
           >
             <div
               dangerouslySetInnerHTML={{ __html: svg }}
-              className="w-20 h-20 md:w-24 md:h-24 hover:opacity-60 hover:rounded-full"
+              className="sm:w-15 sm:h-15 md:w-24 md:h-24 hover:opacity-60 hover:rounded-full"
             />
           </div>
         ) : (

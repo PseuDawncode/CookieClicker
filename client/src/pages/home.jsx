@@ -1,12 +1,27 @@
-import React from "react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import CookieClicker from "../components/CookieClicker";
+const home = ({ loggedIn }) => {
+  const navigate = useNavigate();
 
-const home = () => {
+  // Navigate to login if user is not loggedIn else to game
+  useEffect(() => {
+    if (!loggedIn) {
+      navigate("/login");
+    }
+  }, [loggedIn, navigate]);
+
   return (
-    <div className="flex flex-row justify-center items-center px-4">
-      <h1 className="sm:text-3xl md:text-5xl my-10 mx-4 text-center">
-        Welcome to Game
-      </h1>
-    </div>
+    <>
+      {loggedIn && (
+        <div className="flex flex-col justify-center items-center px-4">
+          <h1 className="sm:text-3xl md:text-5xl my-10 mx-4 text-center">
+            Welcome to Game
+          </h1>
+          <CookieClicker />
+        </div>
+      )}
+    </>
   );
 };
 

@@ -4,19 +4,32 @@ import Login from "./components/loginForm";
 import Register from "./components/signupForm";
 import Nav from "./components/navbar";
 import Home from "./pages/home";
+import CookieGame from "./components/CookieGame";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [loggedInUsername, setLoggedInUsername] = useState("");
-  const [pic, setPic] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(() => {
+    return localStorage.getItem("authToken") ? true : false;
+  });
+  const [loggedInUsername, setLoggedInUsername] = useState(
+    localStorage.getItem("loggedInUsername" || "")
+  );
+  const [pic, setPic] = useState(localStorage.getItem("profilePic") || null);
+
   const handleLoginSuccess = (username, profilePic) => {
     setLoggedIn(true);
     setLoggedInUsername(username);
     setPic(profilePic);
+    localStorage.setItem("authToken", "true");
+    localStorage.setItem("loggedInUsername", username);
+    localStorage.setItem("profilePic", profilePic);
   };
+  
   const handleLogout = () => {
     setLoggedIn(false);
     setLoggedInUsername("");
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("loggedInUsername");
+    localStorage.removeItem("profilePic");
   };
 
   return (
@@ -29,13 +42,16 @@ function App() {
           onLogout={handleLogout}
         />
         <Routes>
-          <Route path="/" element={<Home />}>
+          <Route
+            path="/"
+            element={loggedIn ? <CookieGame /> : <Home loggedIn={loggedIn} />}
+          >
             {" "}
             Home{" "}
           </Route>
           <Route
             path="/login"
-            element={<Login onLoginSuccess={handleLoginSuccess}  />}
+            element={<Login onLoginSuccess={handleLoginSuccess} />}
           >
             {" "}
             Login{" "}
