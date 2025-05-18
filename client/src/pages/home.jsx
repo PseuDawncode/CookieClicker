@@ -1,12 +1,19 @@
 import React from "react";
+import welcomeImage from "../assets/images/welcomeImg.png";
 
 const home = () => {
-  return (
-    <div className="flex flex-row justify-center items-center px-4">
-      <h1 className="sm:text-3xl md:text-5xl my-10 mx-4 text-center">
-        Welcome to Game
-      </h1>
-    </div>
+return (
+<div
+  style={{
+    backgroundImage: `url(${welcomeImage})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    height: "100vh",
+    width: "100vw",
+  }}
+>
+</div>
   );
 };
 
