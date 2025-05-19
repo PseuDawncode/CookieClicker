@@ -1,15 +1,19 @@
 //For Navigation Bar
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Music from "./music";
 import musicImage from "../assets/images/music.png";
+import noMusicImage from "../assets/images/nomusic.png";
 const navbar = ({ loggedIn, username, profilePic, onLogout }) => {
   const [isPlaying, setIsPlaying] = useState(false);
-
+  const navigate = useNavigate();
   const startMusic = () => {
-    setIsPlaying(true);
+    setIsPlaying(!isPlaying);
   };
-
+  const handleLogoutAndNavigate = () => {
+    onLogout();
+    navigate("/login");
+  };
   return (
     <nav className="bg-amber-800 sm:p-4 md:p-8 flex justify-between items-center">
       <h1 className="flex text-white sm:text-2xl md:text-3xl font-bold cursor-pointer">
@@ -18,11 +22,19 @@ const navbar = ({ loggedIn, username, profilePic, onLogout }) => {
           Cookie Clicker
         </Link>
       </h1>
-      {!isPlaying && (
+      {!isPlaying ? (
         <button className="cursor-pointer" onClick={startMusic}>
           <img
             src={musicImage}
             alt="music image"
+            className="w-10 h-10 rounded-4xl"
+          />{" "}
+        </button>
+      ) : (
+        <button className="cursor-pointer" onClick={startMusic}>
+          <img
+            src={noMusicImage}
+            alt="stop music image"
             className="w-10 h-10 rounded-4xl"
           />{" "}
         </button>
@@ -60,7 +72,7 @@ const navbar = ({ loggedIn, username, profilePic, onLogout }) => {
           ></span>
           <Link to="/">
             <button
-              onClick={onLogout}
+              onClick={handleLogoutAndNavigate}
               className="px-4 py-2 sm:w-23 md:w-30 rounded text-white cursor-pointer"
               style={{ backgroundColor: "#D27D2D" }}
             >
