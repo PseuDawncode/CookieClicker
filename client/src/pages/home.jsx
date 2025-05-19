@@ -23,16 +23,29 @@ return (
           padding: "2rem",
           borderRadius: "8px",
           textAlign: "center",
-          maxWidth: "450px",
+          maxWidth: "550px",
           color: "white",
+          
         }}
       >
-        <p>
-          Lorem ipsum Lorem ipsum Lorem Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-          Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-          Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-          Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-          Lorem ipsumipsum Lorem ipsum Lorem ipsum Lorem ipsum.
+        <p
+            style={{
+            fontFamily: "'Poppins', sans-serif",
+            fontSize: "16px",
+            lineHeight: "1.6",
+            fontWeight: "300",
+            letterSpacing: "0.3px",
+            marginBottom: "15px",
+            
+          }}
+        >
+            This is a simple cookie clicker game demo. Where you click the cookie to earn cookies. 
+            With the earned cookies you can buy upgrades to increase your cookie production. 
+            For the purpose of this demo, we have added only two upgrades. The first one is a simple 'Auto Clicker' 
+            upgrade that counts as one click every second increasing the cookie production by one. 
+            The second one is a 'Double Click' upgrade that doubles the amount of cookies you earn per click. 
+            (does not stack with the auto clicker). Please note that to play the game you need to be logged in. 
+            If you are not logged in, please login or register to play the game. Have fun!
         </p>
         
         <button
