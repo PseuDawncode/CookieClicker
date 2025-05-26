@@ -1,38 +1,30 @@
 import { useEffect, useState } from "react";
-import CookieClicker from "./CookieClicker"; 
+import CookieClicker from "./CookieClicker";
 import Upgrades from "./Upgrades";
 
 export default function CookieGame() {
-  const [clickCount, setClickCount] = useState(() => {
-    return parseInt(localStorage.getItem("clickCount")) || 0;
-  });
+  const [clickCount, setClickCount] = useState(() => parseInt(localStorage.getItem("clickCount")) || 0);
+  const [doubleClickLevel, setDoubleClickLevel] = useState(() => parseInt(localStorage.getItem("doubleClickLevel")) || 0);
+  const [autoClickerActive, setAutoClickerActive] = useState(() => localStorage.getItem("autoClickerActive") === "true");
 
-  const [doubleClickActive, setDoubleClickActive] = useState(() => {
-    return localStorage.getItem("doubleClickActive") === "true";
-  });
+  const doubleClickMultiplier = 2 ** doubleClickLevel;
 
-  const [autoClickerActive, setAutoClickerActive] = useState(() => {
-    return localStorage.getItem("autoClickerActive") === "true";
-  });
-
-  const handleCookieClick = () => {
-    const increment = doubleClickActive ? 2 : 1;
-    const newCount = clickCount + increment;
+  const handleClick = () => {
+    const newCount = clickCount + doubleClickMultiplier;
     setClickCount(newCount);
     localStorage.setItem("clickCount", newCount);
   };
 
   const handleUpgrade = (upgrade) => {
-    if (upgrade.name === "Double Clicks") {
-      setDoubleClickActive(true);
-      localStorage.setItem("doubleClickActive", "true");
+    if (upgrade.id === "double") {
+      const newLevel = doubleClickLevel + 1;
+      setDoubleClickLevel(newLevel);
+      localStorage.setItem("doubleClickLevel", newLevel);
     }
 
-    if (upgrade.name === "Auto Clicker") {
-      if (!autoClickerActive) {
-        setAutoClickerActive(true);
-        localStorage.setItem("autoClickerActive", "true");
-      }
+    if (upgrade.id === "auto" && !autoClickerActive) {
+      setAutoClickerActive(true);
+      localStorage.setItem("autoClickerActive", "true");
     }
   };
 
@@ -40,7 +32,7 @@ export default function CookieGame() {
     if (!autoClickerActive) return;
 
     const interval = setInterval(() => {
-      setClickCount(prev => {
+      setClickCount((prev) => {
         const newCount = prev + 1;
         localStorage.setItem("clickCount", newCount);
         return newCount;
@@ -52,8 +44,17 @@ export default function CookieGame() {
 
   return (
     <div className="text-center p-8">
-      <CookieClicker onCookieClick={handleCookieClick} count={clickCount} />
-      <Upgrades clickCount={clickCount} onUpgrade={handleUpgrade} />
+      <h1 className="text-3xl font-bold mb-4">🍪 Cookie Clicker</h1>
+      <CookieClicker
+        onCookieClick={handleClick}
+        count={clickCount}
+        increment={doubleClickMultiplier}
+      />
+      <Upgrades
+        clickCount={clickCount}
+        onUpgrade={handleUpgrade}
+        doubleClickLevel={doubleClickLevel}
+      />
     </div>
   );
 }
