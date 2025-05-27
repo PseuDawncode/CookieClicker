@@ -1,19 +1,30 @@
 import React from "react";
 import welcomeImage from "../assets/images/welcomeImg.png";
+import { useNavigate } from "react-router-dom";
+const home = ({ loggedIn }) => {
+  const navigate = useNavigate();
 
-const home = () => {
-return (
-<div
-  style={{
-    backgroundImage: `url(${welcomeImage})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    height: "100vh",
-    width: "100vw",
-  }}
->
-          <div
+  function handlePlayNow() {
+    console.log(loggedIn);
+    if (!loggedIn) {
+      navigate("/login");
+    } else if (loggedIn) {
+      navigate("/game");
+    }
+  }
+
+  return (
+    <div
+      style={{
+        backgroundImage: `url(${welcomeImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        height: "100vh",
+        width: "100vw",
+      }}
+    >
+      <div
         style={{
           position: "absolute",
           top: "85%",
@@ -25,29 +36,30 @@ return (
           textAlign: "center",
           maxWidth: "550px",
           color: "white",
-          
         }}
       >
         <p
-            style={{
+          style={{
             fontFamily: "'Poppins', sans-serif",
             fontSize: "16px",
             lineHeight: "1.6",
             fontWeight: "300",
             letterSpacing: "0.3px",
             marginBottom: "15px",
-            
           }}
         >
-            This is a simple cookie clicker game demo. Where you click the cookie to earn cookies. 
-            With the earned cookies you can buy upgrades to increase your cookie production. 
-            For the purpose of this demo, we have added only two upgrades. The first one is a simple 'Auto Clicker' 
-            upgrade that counts as one click every second increasing the cookie production by one. 
-            The second one is a 'Double Click' upgrade that doubles the amount of cookies you earn per click. 
-            (does not stack with the auto clicker). Please note that to play the game you need to be logged in. 
-            If you are not logged in, please login or register to play the game. Have fun!
+          This is a simple cookie clicker game demo. Where you click the cookie
+          to earn cookies. With the earned cookies you can buy upgrades to
+          increase your cookie production. For the purpose of this demo, we have
+          added only two upgrades. The first one is a simple 'Auto Clicker'
+          upgrade that counts as one click every second increasing the cookie
+          production by one. The second one is a 'Double Click' upgrade that
+          doubles the amount of cookies you earn per click. (does not stack with
+          the auto clicker). Please note that to play the game you need to be
+          logged in. If you are not logged in, please login or register to play
+          the game. Have fun!
         </p>
-        
+
         <button
           style={{
             marginTop: "20px",
@@ -68,15 +80,12 @@ return (
             e.target.style.backgroundColor = "transparent";
             e.target.style.color = "white";
           }}
+          onClick={handlePlayNow}
         >
           Play Now
         </button>
       </div>
-
-</div>
-    
-
-
+    </div>
   );
 };
 
