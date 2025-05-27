@@ -33,7 +33,7 @@ export default function CookieGame() {
 
     const interval = setInterval(() => {
       setClickCount((prev) => {
-        const newCount = prev + 1;
+        const newCount = prev + doubleClickMultiplier;
         localStorage.setItem("clickCount", newCount);
         return newCount;
       });
@@ -44,7 +44,7 @@ export default function CookieGame() {
 
   return (
     <div className="text-center p-8">
-      <h1 className="text-3xl font-bold mb-4">🍪 Cookie Clicker</h1>
+      
       <CookieClicker
         onCookieClick={handleClick}
         count={clickCount}
