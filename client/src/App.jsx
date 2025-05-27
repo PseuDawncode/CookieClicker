@@ -23,7 +23,7 @@ function App() {
     localStorage.setItem("loggedInUsername", username);
     localStorage.setItem("profilePic", profilePic);
   };
-  
+
   const handleLogout = () => {
     setLoggedIn(false);
     setLoggedInUsername("");
@@ -42,12 +42,16 @@ function App() {
           onLogout={handleLogout}
         />
         <Routes>
+          <Route path="/" element={<Home loggedIn={loggedIn} />}>
+            {" "}
+            Home{" "}
+          </Route>
           <Route
-            path="/"
+            path="/game"
             element={loggedIn ? <CookieGame /> : <Home loggedIn={loggedIn} />}
           >
             {" "}
-            Home{" "}
+            Game{" "}
           </Route>
           <Route
             path="/login"
