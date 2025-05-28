@@ -44,17 +44,13 @@ const navbar = ({ loggedIn, username, profilePic, onLogout }) => {
         <div className="flex items-center gap-4">
           <Link to="/login">
             <button
-              className="px-4 py-2 sm:w-23 md:w-30 rounded text-white cursor-pointer"
-              style={{ backgroundColor: "#D27D2D" }}
+              className="px-4 py-2 sm:w-23 md:w-30 rounded text-white cursor-pointer bg-[#D27D2D]  hover:text-black hover:bg-white"
             >
               Login
             </button>
           </Link>
           <Link to="/register">
-            <button
-              className="px-4 py-2 sm:w-23 md:w-30 rounded text-white cursor-pointer"
-              style={{ backgroundColor: "#D27D2D" }}
-            >
+            <button className="px-4 py-2 sm:w-23 md:w-30 rounded text-white bg-[#D27D2D] cursor-pointer  hover:text-black hover:bg-white">
               Register
             </button>
           </Link>

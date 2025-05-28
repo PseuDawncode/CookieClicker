@@ -42,22 +42,22 @@ const profileAvatar = ({ onAvatarSelect }) => {
       <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4">
         {avatarArray.map((svg, index) =>
           svg ? (
-          <div
-            key={index}
-            className={`relative rounded-full overflow-hidden shadow-md cursor-pointer
+            <div
+              key={index}
+              className={`relative rounded-full overflow-hidden shadow-md cursor-pointer
             ${
               avatarSelected === index
                 ? "border-2 border-black rounded-full"
                 : ""
             }`}
-            onClick={() => handleAvatarClick(svg, index)}
-          >
-            <div
-              dangerouslySetInnerHTML={{ __html: svg }}
-              className="sm:w-15 sm:h-15 md:w-24 md:h-24 hover:opacity-60 hover:rounded-full"
-            />
-          </div>
-        ) : (
+              onClick={() => handleAvatarClick(svg, index)}
+            >
+              <div
+                dangerouslySetInnerHTML={{ __html: svg }}
+                className="sm:w-15 sm:h-15 md:w-24 md:h-24 hover:opacity-60 hover:rounded-full"
+              />
+            </div>
+          ) : (
             <div key={index} className="text-center text-gray-500">
               Error loading avatar {index + 1}
             </div>
@@ -67,7 +67,7 @@ const profileAvatar = ({ onAvatarSelect }) => {
       <button
         type="button"
         onClick={generateAvatar}
-        className="w-auto m-4 p-2 bg-[#D27D2D] text-white rounded hover:opacity-90 transition"
+        className="w-auto m-4 p-2 border-2  rounded-2xl bg-[#D27D2D]  text-white text-balance hover:text-black hover:bg-white cursor-pointer"
       >
         View more...
       </button>

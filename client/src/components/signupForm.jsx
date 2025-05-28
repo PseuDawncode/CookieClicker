@@ -79,7 +79,7 @@ const signup = () => {
   return (
     <>
       <div className="flex flex-row flex-wrap justify-center items-center">
-        <div className="md:w-1/3 h-2/3 flex-row m-20 p-10 border-2 rounded-2xl">
+        <div className="md:w-1/3 h-2/3 flex-row m-20 p-10 border-2 rounded-2xl bg-[#c9a685]">
           <h2 className="text-2xl font-bold text-center">Register</h2>
           {errorMessage.length > 0 && (
             <div className="text-sm text-red-500">
@@ -100,7 +100,7 @@ const signup = () => {
               name="username"
               id="username"
               placeholder="Type your email"
-              className="block w-full border-b-2 outline-none mt-2"
+              className="block w-full border-b-2 h-14 p-2 outline-none mt-2 rounded-lg"
               value={username}
               onChange={(event) => setUsername(event.target.value)}
             />
@@ -112,7 +112,7 @@ const signup = () => {
               type="text"
               name="passsword"
               id="passsword"
-              className="block w-full border-b-2 outline-none mt-2"
+              className="block w-full border-b-2 h-14 p-2 outline-none mt-2 rounded-lg"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
             />
@@ -134,14 +134,14 @@ const signup = () => {
               type="text"
               name="confirmpasssword"
               id="confirmpasssword"
-              className="block w-full border-b-2 outline-none  mt-2"
+              className="block w-full border-b-2 h-14 p-2 outline-none mt-2 rounded-lg"
               value={confirmPassword}
               onChange={(event) => setConfirmPassword(event.target.value)}
             />
 
             <button
               type="submit"
-              className="mt-6 p-2 border-2 w-full rounded-2xl bg-white text-balance hover:text-white hover:bg-black"
+              className="mt-6 p-2 border-2 w-full rounded-2xl bg-[#D27D2D]  text-white text-balance hover:text-black hover:bg-white cursor-pointer"
             >
               Register
             </button>
