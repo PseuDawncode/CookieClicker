@@ -1,6 +1,7 @@
 import React from "react";
 import welcomeImage from "../assets/images/welcomeImg.png";
 import { useNavigate } from "react-router-dom";
+
 const home = ({ loggedIn }) => {
   const navigate = useNavigate();
 
@@ -15,72 +16,31 @@ const home = ({ loggedIn }) => {
 
   return (
     <div
-      style={{
-        backgroundImage: `url(${welcomeImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        height: "100vh",
-        width: "100vw",
-      }}
+      className="h-screen w-screen bg-cover bg-center bg-no-repeat relative"
+      style={{ backgroundImage: `url(${welcomeImage})` }}
     >
-      <div
-        style={{
-          position: "absolute",
-          top: "85%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          backgroundColor: "rgba(0, 48, 24, 0.95)",
-          padding: "2rem",
-          borderRadius: "8px",
-          textAlign: "center",
-          maxWidth: "550px",
-          color: "white",
-        }}
-      >
-        <p
-          style={{
-            fontFamily: "'Poppins', sans-serif",
-            fontSize: "16px",
-            lineHeight: "1.6",
-            fontWeight: "300",
-            letterSpacing: "0.3px",
-            marginBottom: "15px",
-          }}
-        >
-          This is a simple cookie clicker game demo. Where you click the cookie
-          to earn cookies. With the earned cookies you can buy upgrades to
-          increase your cookie production. For the purpose of this demo, we have
-          added only two upgrades. The first one is a simple 'Auto Clicker'
-          upgrade that counts as one click every second increasing the cookie
-          production by one. The second one is a 'Double Click' upgrade that
-          doubles the amount of cookies you earn per click. (does not stack with
-          the auto clicker). Please note that to play the game you need to be
-          logged in. If you are not logged in, please login or register to play
-          the game. Have fun!
+      <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 bg-[rgba(0,48,24,0.95)] p-8 rounded-lg text-white max-w-xl text-center">
+        <p className="font-light text-base leading-relaxed tracking-wide mb-4 font-poppins text-left">
+          <span className="text-2xl font-semibold block mb-4">
+            Welcome to Cookie Clicker Game 🍪
+          </span>
+
+          <div className="mb-3">
+            Get ready for a fun clicking adventure!
+          </div>
+
+          <div className="mb-3">
+            Looking for a fresh, exciting way to play and earn? In Cookie Clicker, every tap brings you closer to awesome features. Accumulate cookies to unlock powerful upgrades, boost your clicking speed, and discover golden cookies that can be redeemed for real-world treats!
+          </div>
+
+          <div>
+            Start clicking. Start earning. Start enjoying!
+          </div>
         </p>
 
         <button
-          style={{
-            marginTop: "20px",
-            padding: "10px 30px",
-            backgroundColor: "transparent",
-            color: "white",
-            border: "2px solid #FFDD00",
-            borderRadius: "25px",
-            fontSize: "16px",
-            cursor: "pointer",
-            transition: "all 0.3s ease",
-          }}
-          onMouseOver={(e) => {
-            e.target.style.backgroundColor = "#FFDD00";
-            e.target.style.color = "#003018";
-          }}
-          onMouseOut={(e) => {
-            e.target.style.backgroundColor = "transparent";
-            e.target.style.color = "white";
-          }}
           onClick={handlePlayNow}
+          className="mt-5 px-8 py-2 border-2 border-yellow-300 rounded-full text-white text-base transition-all duration-300 hover:bg-yellow-300 hover:text-[#003018]"
         >
           Play Now
         </button>
