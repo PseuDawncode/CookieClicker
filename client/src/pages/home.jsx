@@ -30,19 +30,7 @@ const home = ({ loggedIn }) => {
           </div>
 
           <div className="mb-3">
-            Looking for a fresh, exciting way to play and earn? In Cookie Clicker, every tap brings you closer to awesome rewards. Accumulate cookies to unlock powerful upgrades, boost your clicking speed, and discover golden cookies that can be redeemed for real-world treats!
-          </div>
-
-          <div className="text-gold-500 font-bold text-lg mb-2 text-yellow-400">
-            🎁 Earn Golden Cookies
-          </div>
-
-          <div className="mb-3">
-            Exchange them for real cookies at the Cookie Bakeshop or redeem them for a tasty burger at McBurgery!
-          </div>
-
-          <div className="mb-3">
-            Whether you're here for a casual click or to climb the cookie leaderboard, the goal is simple: have fun, relax, and enjoy the sweet rewards.
+            Looking for a fresh, exciting way to play and earn? In Cookie Clicker, every tap brings you closer to awesome features. Accumulate cookies to unlock powerful upgrades, boost your clicking speed, and discover golden cookies that can be redeemed for real-world treats!
           </div>
 
           <div>
