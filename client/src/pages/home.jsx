@@ -20,17 +20,34 @@ const home = ({ loggedIn }) => {
       style={{ backgroundImage: `url(${welcomeImage})` }}
     >
       <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 bg-[rgba(0,48,24,0.95)] p-8 rounded-lg text-white max-w-xl text-center">
-        <p className="font-light text-base leading-relaxed tracking-wide mb-4 font-poppins">
-          This is a simple cookie clicker game demo. Where you click the cookie
-          to earn cookies. With the earned cookies you can buy upgrades to
-          increase your cookie production. For the purpose of this demo, we have
-          added only two upgrades. The first one is a simple 'Auto Clicker'
-          upgrade that counts as one click every second increasing the cookie
-          production by one. The second one is a 'Double Click' upgrade that
-          doubles the amount of cookies you earn per click. (does not stack with
-          the auto clicker). Please note that to play the game you need to be
-          logged in. If you are not logged in, please login or register to play
-          the game. Have fun!
+        <p className="font-light text-base leading-relaxed tracking-wide mb-4 font-poppins text-left">
+          <span className="text-2xl font-semibold block mb-4">
+            Welcome to Cookie Clicker Game 🍪
+          </span>
+
+          <div className="mb-3">
+            Get ready for a fun clicking adventure!
+          </div>
+
+          <div className="mb-3">
+            Looking for a fresh, exciting way to play and earn? In Cookie Clicker, every tap brings you closer to awesome rewards. Accumulate cookies to unlock powerful upgrades, boost your clicking speed, and discover golden cookies that can be redeemed for real-world treats!
+          </div>
+
+          <div className="text-gold-500 font-bold text-lg mb-2 text-yellow-400">
+            🎁 Earn Golden Cookies
+          </div>
+
+          <div className="mb-3">
+            Exchange them for real cookies at the Cookie Bakeshop or redeem them for a tasty burger at McBurgery!
+          </div>
+
+          <div className="mb-3">
+            Whether you're here for a casual click or to climb the cookie leaderboard, the goal is simple: have fun, relax, and enjoy the sweet rewards.
+          </div>
+
+          <div>
+            Start clicking. Start earning. Start enjoying!
+          </div>
         </p>
 
         <button
