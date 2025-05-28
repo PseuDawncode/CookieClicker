@@ -9,7 +9,7 @@ const home = ({ loggedIn }) => {
     console.log(loggedIn);
     if (!loggedIn) {
       navigate("/login");
-    } else if (loggedIn) {
+    } else {
       navigate("/game");
     }
   }
@@ -20,7 +20,7 @@ const home = ({ loggedIn }) => {
       style={{ backgroundImage: `url(${welcomeImage})` }}
     >
       <div className="absolute top-80 bg-[rgba(0,48,24,0.95)] p-4 sm:p-8 rounded-lg text-white w-11/12 min-w-[280px] max-w-xl text-center shadow-lg">
-        <p className="font-light text-base leading-relaxed tracking-wide mb-4 font-poppins text-left">
+        <div className="font-light text-base leading-relaxed tracking-wide mb-4 font-poppins text-left">
           <span className="text-xl sm:text-2xl font-semibold block mb-4 text-center">
             Welcome to Cookie Clicker Game 🍪
           </span>
@@ -36,7 +36,7 @@ const home = ({ loggedIn }) => {
           <div className="text-sm sm:text-base">
             Start clicking. Start earning. Start enjoying!
           </div>
-        </p>
+        </div>
 
         <button
           onClick={handlePlayNow}

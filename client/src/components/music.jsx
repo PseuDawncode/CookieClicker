@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 const music = ({ soundId, shouldLoop }) => {
   const audioRef = useRef(null);
   const apiKey = "DzsBedlWKUcQD7LIDr286m1MUXNcxvGucP2cEmVv";
-  // const soundId = "251461"; //   beats (699618, 335688, 251461,) // cheers (353923, 267247) incase of cheers we must turn off the loop and set it to false
+// const soundId = "251461"; //   beats (699618, 335688, 251461,) // cheers (353923, 267247) incase of cheers we must turn off the loop and set it to false
   // for more sounds -  https://freesound.org/
 
   useEffect(() => {

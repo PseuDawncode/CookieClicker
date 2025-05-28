@@ -1,50 +1,89 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import CookieClicker from "./CookieClicker";
 import Upgrades from "./Upgrades";
 
-export default function CookieGame() {
-  const [clickCount, setClickCount] = useState(() => parseInt(localStorage.getItem("clickCount")) || 0);
-  const [doubleClickLevel, setDoubleClickLevel] = useState(() => parseInt(localStorage.getItem("doubleClickLevel")) || 0);
-  const [autoClickerActive, setAutoClickerActive] = useState(() => localStorage.getItem("autoClickerActive") === "true");
+export default function CookieGame({
+  initialClickCount,
+  initialDoubleClickLevel,
+  initialAutoClickerActive,
+  onSaveGame,
+}) {
+  // Initialize state using the initial props passed from App.jsx
+  const [clickCount, setClickCount] = useState(initialClickCount);
+  const [doubleClickLevel, setDoubleClickLevel] = useState(
+    initialDoubleClickLevel
+  );
+  const [autoClickerActive, setAutoClickerActive] = useState(
+    initialAutoClickerActive
+  );
 
   const doubleClickMultiplier = 2 ** doubleClickLevel;
 
+  // useRef to store the timeout ID for debouncing save calls
+  const saveTimeoutRef = useRef(null);
+
+  // Effect to re-sync internal state with initial props if they change (e.g., user logs in/out)
+  useEffect(() => {
+    setClickCount(initialClickCount);
+    setDoubleClickLevel(initialDoubleClickLevel);
+    setAutoClickerActive(initialAutoClickerActive);
+  }, [initialClickCount, initialDoubleClickLevel, initialAutoClickerActive]);
+
+  // To handle saving of data with timeInterval of 500ms
+  useEffect(() => {
+    // Only attempt to save if the onSaveGame function is provided
+    if (onSaveGame) {
+      // Clear any existing timeout to ensure only one save operation is pending
+      if (saveTimeoutRef.current) {
+        clearTimeout(saveTimeoutRef.current);
+      }
+
+      // A timeout to call onSaveGame after 500ms
+      saveTimeoutRef.current = setTimeout(() => {
+        onSaveGame({
+          clickCount: clickCount,
+          doubleClickLevel: doubleClickLevel,
+          autoClickerActive: autoClickerActive,
+        });
+      }, 500);
+
+      // Cleanup function: ensures any pending save is cleared
+      return () => {
+        if (saveTimeoutRef.current) {
+          clearTimeout(saveTimeoutRef.current);
+        }
+      };
+    }
+  }, [clickCount, doubleClickLevel, autoClickerActive, onSaveGame]);
+
   const handleClick = () => {
-    const newCount = clickCount + doubleClickMultiplier;
-    setClickCount(newCount);
-    localStorage.setItem("clickCount", newCount);
+    setClickCount((prevCount) => prevCount + doubleClickMultiplier);
+
   };
 
   const handleUpgrade = (upgrade) => {
     if (upgrade.id === "double") {
-      const newLevel = doubleClickLevel + 1;
-      setDoubleClickLevel(newLevel);
-      localStorage.setItem("doubleClickLevel", newLevel);
+      setDoubleClickLevel((prevLevel) => prevLevel + 1);
     }
 
     if (upgrade.id === "auto" && !autoClickerActive) {
       setAutoClickerActive(true);
-      localStorage.setItem("autoClickerActive", "true");
     }
   };
 
+  // Auto-clicker interval is 1 second
   useEffect(() => {
     if (!autoClickerActive) return;
 
     const interval = setInterval(() => {
-      setClickCount((prev) => {
-        const newCount = prev + doubleClickMultiplier;
-        localStorage.setItem("clickCount", newCount);
-        return newCount;
-      });
+      setClickCount((prev) => prev + doubleClickMultiplier);
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [autoClickerActive]);
+  }, [autoClickerActive, doubleClickMultiplier]);
 
   return (
     <div className="text-center p-8">
-      
       <CookieClicker
         onCookieClick={handleClick}
         count={clickCount}
