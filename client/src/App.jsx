@@ -48,7 +48,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename="/CookieClicker">
         <Nav
           loggedIn={loggedIn}
           username={loggedInUsername}
