@@ -15,26 +15,29 @@ const Navbar = ({ loggedIn, username, profilePic, onLogout }) => {
     navigate("/login");
   };
   return (
-    <nav className="bg-amber-800 sm:p-4 md:p-8 flex justify-between items-center">
+    <nav className="bg-amber-800 p-4 sm:p-5 flex justify-between items-center">
       <h1 className="flex text-white sm:text-2xl md:text-3xl font-bold cursor-pointer">
         {" "}
-        <Link className="ml-9" to="/">
+        <Link className="ml-9 sm:p-4" to="/">
           Cookie Clicker
         </Link>
       </h1>
       <div className="flex-grow flex justify-center items-center">
-        <button className="cursor-pointer w-10 h-10" onClick={startMusic}>
+        <button
+          className="cursor-pointer sm:w-10 sm:h-10 w-7 h-7"
+          onClick={startMusic}
+        >
           {!isPlaying ? (
             <img
               src={musicImage}
               alt="music image"
-              className="w-10 h-10 rounded-4xl"
+              className="sm:w-10 sm:h-10 rounded-4xl w-7 h-7"
             />
           ) : (
             <img
               src={noMusicImage}
               alt="stop music image"
-              className="w-10 h-10 rounded-4xl"
+              className="sm:w-10 sm:h-10 rounded-4xl w-7 h-7"
             />
           )}
         </button>
@@ -44,19 +47,19 @@ const Navbar = ({ loggedIn, username, profilePic, onLogout }) => {
         {!loggedIn ? (
           <>
             <Link to="/login">
-              <button className="px-4 py-2 sm:w-23 md:w-30 rounded text-white cursor-pointer bg-[#D27D2D] hover:text-black hover:bg-white">
+              <button className="px-1 py-2 mx-3 w-15 text-sm  sm:w-23 md:w-30 rounded text-white cursor-pointer bg-[#D27D2D] hover:text-black hover:bg-white">
                 Login
               </button>
             </Link>
             <Link to="/register">
-              <button className="px-4 py-2 sm:w-23 md:w-30 rounded text-white bg-[#D27D2D] cursor-pointer hover:text-black hover:bg-white">
+              <button className="px-1 py-2 w-18 text-sm  sm:w-23 md:w-30 rounded text-white bg-[#D27D2D] cursor-pointer hover:text-black hover:bg-white">
                 Register
               </button>
             </Link>
           </>
         ) : (
           <>
-            <span className="text-yellow-300 text-lg hidden md:inline">
+            <span className="text-yellow-300 text-sm sm:text-lg hidden md:inline">
               Welcome, {username}!{" "}
             </span>
             {typeof profilePic === "string" && profilePic && (
@@ -68,7 +71,7 @@ const Navbar = ({ loggedIn, username, profilePic, onLogout }) => {
             <Link to="/">
               <button
                 onClick={handleLogoutAndNavigate}
-                className="px-4 py-2 sm:w-23 md:w-30 rounded text-white cursor-pointer"
+                className="px-1 py-2 mx-3 w-15 text-sm sm:w-23 md:w-30 rounded text-white cursor-pointer"
                 style={{ backgroundColor: "#D27D2D" }}
               >
                 Logout

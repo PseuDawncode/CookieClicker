@@ -16,7 +16,7 @@ const home = ({ loggedIn }) => {
 
   return (
     <div
-      className="min-h-screen w-full bg-cover bg-center bg-no-repeat relative flex items-center justify-center"
+      className="min-h-screen w-full bg-cover bg-center bg-no-repeat relative flex items-center justify-center  "
       style={{ backgroundImage: `url(${welcomeImage})` }}
     >
       <div className="absolute top-80 bg-[rgba(0,48,24,0.95)] p-4 sm:p-8 rounded-lg text-white w-11/12 min-w-[280px] max-w-xl text-center shadow-lg">
@@ -30,7 +30,10 @@ const home = ({ loggedIn }) => {
           </div>
 
           <div className="mb-3 text-sm sm:text-base">
-            Looking for a fresh, exciting way to play and earn? In Cookie Clicker, every tap brings you closer to awesome features. Accumulate cookies to unlock powerful upgrades, boost your clicking speed, and discover golden cookies that can be redeemed for real-world treats!
+            Looking for a fresh, exciting way to play and earn? In Cookie
+            Clicker, every tap brings you closer to awesome features. Accumulate
+            cookies to unlock powerful upgrades, boost your clicking speed, and
+            discover golden cookies that can be redeemed for real-world treats!
           </div>
 
           <div className="text-sm sm:text-base">
