@@ -16,24 +16,24 @@ const home = ({ loggedIn }) => {
 
   return (
     <div
-      className="h-screen w-screen bg-cover bg-center bg-no-repeat relative"
+      className="min-h-screen w-full bg-cover bg-center bg-no-repeat relative flex items-center justify-center"
       style={{ backgroundImage: `url(${welcomeImage})` }}
     >
-      <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 bg-[rgba(0,48,24,0.95)] p-8 rounded-lg text-white max-w-xl text-center">
+      <div className="absolute top-80 bg-[rgba(0,48,24,0.95)] p-4 sm:p-8 rounded-lg text-white w-11/12 min-w-[280px] max-w-xl text-center shadow-lg">
         <p className="font-light text-base leading-relaxed tracking-wide mb-4 font-poppins text-left">
-          <span className="text-2xl font-semibold block mb-4">
+          <span className="text-xl sm:text-2xl font-semibold block mb-4 text-center">
             Welcome to Cookie Clicker Game 🍪
           </span>
 
-          <div className="mb-3">
+          <div className="mb-3 text-sm sm:text-base">
             Get ready for a fun clicking adventure!
           </div>
 
-          <div className="mb-3">
+          <div className="mb-3 text-sm sm:text-base">
             Looking for a fresh, exciting way to play and earn? In Cookie Clicker, every tap brings you closer to awesome features. Accumulate cookies to unlock powerful upgrades, boost your clicking speed, and discover golden cookies that can be redeemed for real-world treats!
           </div>
 
-          <div>
+          <div className="text-sm sm:text-base">
             Start clicking. Start earning. Start enjoying!
           </div>
         </p>
