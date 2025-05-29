@@ -1,12 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import CookieCharacter from "../assets/images/CookieCharacter.png"
+import CookieCharacter from "../assets/images/CookieCharacter.png";
 
 const home = ({ loggedIn }) => {
   const navigate = useNavigate();
 
   function handlePlayNow() {
-    console.log(loggedIn);
     if (!loggedIn) {
       navigate("/login");
     } else {
@@ -15,8 +14,7 @@ const home = ({ loggedIn }) => {
   }
 
   return (
-
-        <div className="min-h-screen w-full bg-[#D27D2D] flex flex-col sm:flex-row items-center justify-center px-4 py-10">
+    <div className="min-h-screen w-full bg-[#D27D2D] flex flex-col sm:flex-row items-center justify-center px-4 py-10">
       {/* Cookie Character */}
       <div className="mb-5 sm:mb-0 sm:mr-5">
         <img
@@ -32,10 +30,14 @@ const home = ({ loggedIn }) => {
           Welcome to Cookie Clicker Game 🍪
         </h1>
         <p className="text-lg mb-3 leading-relaxed">
-          Get ready for a fun clicking adventure! Looking for a fresh, exciting way to play and earn? In Cookie Clicker, every tap brings you closer to awesome features.
+          Get ready for a fun clicking adventure! Looking for a fresh, exciting
+          way to play and earn? In Cookie Clicker, every tap brings you closer
+          to awesome features.
         </p>
         <p className="text-lg mb-3 leading-relaxed">
-          Accumulate cookies to unlock powerful upgrades, boost your clicking speed, and discover golden cookies that can be redeemed for real-world treats!
+          Accumulate cookies to unlock powerful upgrades, boost your clicking
+          speed, and discover golden cookies that can be redeemed for real-world
+          treats!
         </p>
         <p className="text-lg mb-6 leading-relaxed">
           Start clicking. Start earning. Start enjoying!
@@ -48,7 +50,6 @@ const home = ({ loggedIn }) => {
             Play Now
           </button>
         </div>
-
       </div>
     </div>
   );
