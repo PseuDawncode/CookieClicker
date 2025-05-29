@@ -1,6 +1,11 @@
-export default function Upgrades({ clickCount, onUpgrade, doubleClickLevel }) {
-  const doubleClickCost = 100 * 4 ** doubleClickLevel;
-  const autoClickerCost = 200;
+export default function Upgrades({
+  clickCount,
+  onUpgrade,
+  doubleClickLevel,
+  autoClicklevel,
+}) {
+  const doubleClickCost = 10 * 4 ** doubleClickLevel;
+  const autoClickerCost = 20;
 
   const buyUpgrade = (upgrade) => {
     if (clickCount >= upgrade.cost) {
@@ -28,6 +33,9 @@ export default function Upgrades({ clickCount, onUpgrade, doubleClickLevel }) {
         <li className="flex justify-between items-center  bg-amber-800 p-4 rounded shadow">
           <span className="text-left w-2/3 text-yellow-400">
             Auto Clicker – {autoClickerCost} cookies
+          </span>
+          <span className="text-left w-2/3 text-green-400">
+            Active Auto Clickers – {autoClicklevel}
           </span>
           <button
             onClick={() => buyUpgrade({ id: "auto", cost: autoClickerCost })}

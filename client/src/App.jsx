@@ -68,6 +68,7 @@ function App() {
                     loggedInUser.autoClickerActive || false
                   }
                   onSaveGame={handleSaveGameProgress}
+                  initialAutoClickerLevel={loggedInUser.autoClickerLevel || 0}
                 />
               ) : (
                 <Home loggedIn={loggedIn} />

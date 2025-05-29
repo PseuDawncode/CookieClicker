@@ -5,7 +5,7 @@ import CustomButton from "./customBtn";
 const login = ({ onLoginSuccess }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = (event) => {
@@ -32,11 +32,9 @@ const login = ({ onLoginSuccess }) => {
       <div className="flex flex-row flex-wrap justify-center items-center ">
         <div className="w-1/3 h-2/3 flex-row m-20 p-10 border-2 rounded-2xl bg-[#c9a685]">
           <h2 className="text-2xl font-bold text-center">Login</h2>
-          {errorMessage.length > 0 && (
+          {errorMessage && (
             <div className="text-sm text-red-500 bg-amber-100">
-              {errorMessage.map((error, index) => (
-                <div key={index}>{error}</div>
-              ))}
+              {errorMessage}
             </div>
           )}
           <form onSubmit={handleLogin}>

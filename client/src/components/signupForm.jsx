@@ -74,6 +74,7 @@ const signup = () => {
             clickCount: 0,
             doubleClickLevel: 0,
             autoClickerActive: false,
+            autoClickerLevel: 0,
           };
           localStorage.setItem(`user_${username}`, JSON.stringify(userProfile));
           alert("Registration successful!");

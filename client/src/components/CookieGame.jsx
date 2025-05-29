@@ -6,6 +6,7 @@ export default function CookieGame({
   initialClickCount,
   initialDoubleClickLevel,
   initialAutoClickerActive,
+  initialAutoClickerLevel,
   onSaveGame,
 }) {
   // Initialize state using the initial props passed from App.jsx
@@ -16,7 +17,9 @@ export default function CookieGame({
   const [autoClickerActive, setAutoClickerActive] = useState(
     initialAutoClickerActive
   );
-
+  const [autoClickerLevel, setAutoClickerLevel] = useState(
+    initialAutoClickerLevel
+  );
   const doubleClickMultiplier = 2 ** doubleClickLevel;
 
   // useRef to store the timeout ID for debouncing save calls
@@ -27,7 +30,13 @@ export default function CookieGame({
     setClickCount(initialClickCount);
     setDoubleClickLevel(initialDoubleClickLevel);
     setAutoClickerActive(initialAutoClickerActive);
-  }, [initialClickCount, initialDoubleClickLevel, initialAutoClickerActive]);
+    setAutoClickerLevel(initialAutoClickerLevel);
+  }, [
+    initialClickCount,
+    initialDoubleClickLevel,
+    initialAutoClickerActive,
+    initialAutoClickerLevel,
+  ]);
 
   // To handle saving of data with timeInterval of 500ms
   useEffect(() => {
@@ -44,6 +53,7 @@ export default function CookieGame({
           clickCount: clickCount,
           doubleClickLevel: doubleClickLevel,
           autoClickerActive: autoClickerActive,
+          autoClickerLevel: autoClickerLevel,
         });
       }, 500);
 
@@ -54,26 +64,40 @@ export default function CookieGame({
         }
       };
     }
-  }, [clickCount, doubleClickLevel, autoClickerActive, onSaveGame]);
+  }, [
+    clickCount,
+    doubleClickLevel,
+    autoClickerActive,
+    autoClickerLevel,
+    onSaveGame,
+  ]);
 
   const handleClick = () => {
-    setClickCount((prevCount) => prevCount + doubleClickMultiplier);
+    if (doubleClickLevel === 0 && autoClickerLevel === 0) {
+      setClickCount((prevCount) => prevCount + 1);
+    } else {
+      setClickCount(
+        (prevCount) => prevCount + doubleClickMultiplier + autoClickerLevel
+      );
+    }
   };
 
   const handleUpgrade = (upgrade) => {
     if (upgrade.id === "double") {
       setClickCount((prevCount) => prevCount - upgrade.cost);
       setDoubleClickLevel((prevLevel) => prevLevel + 1);
-      console.log(clickCount);
     }
 
     if (upgrade.id === "auto") {
-      setClickCount((prevCount) => prevCount - upgrade.cost);
-      console.log(clickCount);
-      if (clickCount < upgrade.cost) {
-        setAutoClickerActive(false);
+      if (clickCount >= upgrade.cost) {
+        setClickCount((prevCount) => prevCount - upgrade.cost);
+        setAutoClickerLevel((prevLevel) => prevLevel + 1);
+        if (!autoClickerActive) {
+          setAutoClickerActive(true);
+        }
+      } else {
+        console.log("Not enough cookies to buy auto-clicker upgrade!");
       }
-      setAutoClickerActive(true);
     }
   };
 
@@ -82,14 +106,17 @@ export default function CookieGame({
     if (!autoClickerActive) return;
 
     const interval = setInterval(() => {
-      setClickCount((prev) => prev + doubleClickMultiplier);
+      setClickCount((prev) => {
+        return prev + doubleClickMultiplier + autoClickerLevel;
+      });
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [autoClickerActive, doubleClickMultiplier]);
+  }, [autoClickerActive, doubleClickMultiplier, autoClickerLevel]);
 
   return (
     <div className="text-center p-8">
+      {autoClickerLevel}
       <CookieClicker
         onCookieClick={handleClick}
         count={clickCount}
@@ -99,6 +126,7 @@ export default function CookieGame({
         clickCount={clickCount}
         onUpgrade={handleUpgrade}
         doubleClickLevel={doubleClickLevel}
+        autoClicklevel={autoClickerLevel}
       />
     </div>
   );
