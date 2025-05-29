@@ -66,6 +66,5 @@ This project is a Cookie Clicker game built with React and Tailwind CSS. It feat
 
 ### Home Page
 
-* **Welcoming Experience:** The `home.jsx` component provides a visually appealing and responsive landing page that introduces users to the Cookie Clicker game.
+* **Welcoming Experience:** The home page provides a visually appealing and responsive landing page that introduces users to the Cookie Clicker game.
 * **Quick Access:** Users can easily start playing or are redirected to log in, depending on their authentication status.
-

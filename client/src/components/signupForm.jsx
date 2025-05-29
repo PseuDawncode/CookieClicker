@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Avatar from "./profileAvatar";
+import CustomButton from "./customBtn";
 const signup = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -73,6 +74,7 @@ const signup = () => {
             clickCount: 0,
             doubleClickLevel: 0,
             autoClickerActive: false,
+            autoClickerLevel: 0,
           };
           localStorage.setItem(`user_${username}`, JSON.stringify(userProfile));
           alert("Registration successful!");
@@ -149,12 +151,7 @@ const signup = () => {
               onChange={(event) => setConfirmPassword(event.target.value)}
             />
 
-            <button
-              type="submit"
-              className="mt-6 p-2 border-2 w-full rounded-2xl bg-[#D27D2D]  text-white text-balance hover:text-black hover:bg-white cursor-pointer"
-            >
-              Register
-            </button>
+            <CustomButton type="submit">Register</CustomButton>
             <p className="text-sm mt-3">
               Already have an account? Please{" "}
               <Link className="text-base  hover:border-b-2" to="/login">
