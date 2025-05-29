@@ -59,12 +59,22 @@ const signup = () => {
     } else {
       if (validatePassword(password, username)) {
         if (selectedAvatar) {
+          const existingUser = localStorage.getItem(`user_${username}`);
+          if (existingUser) {
+            setErrorMessage([
+              "Username already exists. Please choose another.",
+            ]);
+            return;
+          }
           const userProfile = {
             username: username,
             password: password,
             profilePic: selectedAvatar,
+            clickCount: 0,
+            doubleClickLevel: 0,
+            autoClickerActive: false,
           };
-          localStorage.setItem("userProfile", JSON.stringify(userProfile));
+          localStorage.setItem(`user_${username}`, JSON.stringify(userProfile));
           alert("Registration successful!");
           navigate("/login");
         } else {

@@ -8,30 +8,24 @@ const login = ({ onLoginSuccess }) => {
   const [errorMessage, setErrorMessage] = useState([]);
   const navigate = useNavigate();
 
-  function handleLogin(event) {
+  const handleLogin = (event) => {
     event.preventDefault();
-    const dataFromStorage = JSON.parse(localStorage.getItem("userProfile"));
-    setErrorMessage([]);
-    if (!dataFromStorage) {
-      setErrorMessage(["No user profile found. Please register."]);
-      navigate("/register");
-      return;
+    setErrorMessage("");
+
+    const storedUserProfileString = localStorage.getItem(`user_${username}`);
+
+    if (storedUserProfileString) {
+      const userProfile = JSON.parse(storedUserProfileString);
+      if (userProfile.password === password) {
+        onLoginSuccess(userProfile);
+        navigate("/");
+      } else {
+        setErrorMessage("Incorrect password.");
+      }
+    } else {
+      setErrorMessage("Username not found.");
     }
-    if (username !== dataFromStorage.username) {
-      setErrorMessage(["Username is incorrect, Try again"]);
-      setUsername("");
-    }
-    if (password !== dataFromStorage.password) {
-      setErrorMessage(["Password is incorrect, Try again"]);
-      setPassword("");
-    } else if (
-      username === dataFromStorage.username &&
-      password === dataFromStorage.password
-    ) {
-      onLoginSuccess(username, dataFromStorage.profilePic);
-      navigate("/");
-    }
-  }
+  };
 
   return (
     <>

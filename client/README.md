@@ -1,29 +1,56 @@
 # Cookie Clicker
 
-This project is a Cookie Clicker game built with React with Tailwind. It features user authentication (login and registration), profile avatar selection, background music.
+This project is a Cookie Clicker game built with React and Tailwind CSS. It features user authentication (login and registration), profile avatar selection, and background music, all integrated into a classic incremental clicking game experience.
+
+---
 
 ## Getting Started
 
-1.  Clone the repository.
-2.  Navigate to the `client` directory.
-3.  Install dependencies: `npm install` or `yarn install`.
-4.  Start the development server: `npm start` or `yarn start`.
+1.  **Clone the repository:**
+    ```bash
+    git clone [your-repository-url]
+    ```
+2.  **Navigate to the `client` directory:**
+    ```bash
+    cd client
+    ```
+3.  **Install dependencies:**
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+4.  **Start the development server:**
+    ```bash
+    npm start
+    # or
+    yarn start
+    ```
+
+---
 
 ## Key Features
 
-* **Navigation Bar:** Provides intuitive navigation and displays user login status, username, and profile picture. Includes a toggle for background music and logout functionality.
-* **User Authentication:** Log in and register to save user progress (with `localStorage`).
-* **Profile Avatars:** Choose a unique avatar during registration.
-* **Background Music:** Enjoy optional background music during gameplay.
-* **Cookie Clicker Gameplay:**
+- **Navigation Bar:** Provides intuitive navigation and displays user login status, username, and profile picture. It includes a toggle for background music and logout functionality.
+- **User Authentication:** Log in and register to save your game progress locally using `localStorage`.
+- **Profile Avatars:** Choose a unique avatar during registration from a selection fetched from the DiceBear API.
+- **Background Music:** Enjoy optional background music during gameplay, with toggle functionality.
+- **Cookie Clicker Gameplay:**
+  - **Click to Earn:** The core mechanic involves clicking a large cookie to generate more cookies.
+  - **Upgrades System:** Spend your earned cookies on various upgrades to increase your cookie production rate. This includes purchasing "double click" upgrades to earn more cookies per click, and an "auto clicker" to generate cookies passively over time.
+  - **Progress Persistence:** Your cookie count and upgrade levels are saved to your user profile, so your progress is retained between sessions.
 
-**User Authentication & Personalization:**
+---
 
-* **Login:** Existing users can log in using their username (email) and password. Authentication is currently done with checking credentials stored in the browser's `localStorage`.
-* **Registration:** New users can create an account by providing a username, password (with client-side validation), and selecting a unique profile avatar fetched from the DiceBear API. User data is temporarily stored in `localStorage`.
-* **Profile Avatars:** During registration, users can choose from a variety of randomly generated avatars to personalize their profile.
+### User Authentication & Personalization
 
-**Background Music:**
+- **Login:** Existing users can log in using their username (email) and password. Authentication is currently done by checking credentials stored in the browser's `localStorage`.
+- **Registration:** New users can create an account by providing a username, a password (with client-side validation for security), and selecting a unique profile avatar. User data and initial game progress are securely stored in `localStorage`.
+- **Profile Avatars:** During registration, users can personalize their profile by choosing from a variety of randomly generated avatars.
 
-* **Optional Playback:** Users can toggle background music on or off via a music icon in the navigation bar.
-* **Freesound Integration:** When enabled, the application fetches and plays background music using the Freesound API, creating a more engaging atmosphere.
+---
+
+### Background Music
+
+- **Optional Playback:** Users can toggle background music on or off via a music icon in the navigation bar, offering a customizable audio experience.
+- **Freesound Integration:** When enabled, the application seamlessly integrates with the Freesound API to fetch and play background music, creating a more immersive and engaging atmosphere for the user.

@@ -9,12 +9,13 @@ const home = ({ loggedIn }) => {
     console.log(loggedIn);
     if (!loggedIn) {
       navigate("/login");
-    } else if (loggedIn) {
+    } else {
       navigate("/game");
     }
   }
 
   return (
+
         <div className="min-h-screen w-full bg-[#D27D2D] flex flex-col sm:flex-row items-center justify-center px-4 py-10">
       {/* Cookie Character */}
       <div className="mb-5 sm:mb-0 sm:mr-5">
@@ -47,6 +48,7 @@ const home = ({ loggedIn }) => {
             Play Now
           </button>
         </div>
+
       </div>
     </div>
   );
