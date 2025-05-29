@@ -58,15 +58,21 @@ export default function CookieGame({
 
   const handleClick = () => {
     setClickCount((prevCount) => prevCount + doubleClickMultiplier);
-
   };
 
   const handleUpgrade = (upgrade) => {
     if (upgrade.id === "double") {
+      setClickCount((prevCount) => prevCount - upgrade.cost);
       setDoubleClickLevel((prevLevel) => prevLevel + 1);
+      console.log(clickCount);
     }
 
-    if (upgrade.id === "auto" && !autoClickerActive) {
+    if (upgrade.id === "auto") {
+      setClickCount((prevCount) => prevCount - upgrade.cost);
+      console.log(clickCount);
+      if (clickCount < upgrade.cost) {
+        setAutoClickerActive(false);
+      }
       setAutoClickerActive(true);
     }
   };

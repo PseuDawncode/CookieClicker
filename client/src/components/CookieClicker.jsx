@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import cookieImg from "../assets/images/cookie.png";
 export default function CookieClicker({ onCookieClick, count, increment }) {
   const [floatingNumbers, setFloatingNumbers] = useState([]);
   const [crumbs, setCrumbs] = useState([]);
@@ -27,7 +27,7 @@ const crumbY = Math.random() * 200 - 100;
     <div className="relative overflow-visible w-[300px] h-[300px] flex items-center justify-center">
 
       <img
-        src="/cookie.png"
+        src={cookieImg}
         alt="Cookie"
         onClick={handleClick}
         className="w-60 h-60 cursor-pointer transition-transform duration-150 hover:scale-105 active:scale-90"

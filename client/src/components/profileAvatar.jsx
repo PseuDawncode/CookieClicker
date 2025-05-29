@@ -64,13 +64,9 @@ const profileAvatar = ({ onAvatarSelect }) => {
           )
         )}
       </div>
-      <button
-        type="button"
-        onClick={generateAvatar}
-        className="w-auto m-4 p-2 border-2  rounded-2xl bg-[#D27D2D]  text-white text-balance hover:text-black hover:bg-white cursor-pointer"
-      >
+      <CustomButton type="button" onClick={generateAvatar}>
         View more...
-      </button>
+      </CustomButton>
     </div>
   );
 };

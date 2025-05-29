@@ -1,7 +1,7 @@
 //Login Page
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import CustomButton from "./customBtn";
 const login = ({ onLoginSuccess }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -66,12 +66,7 @@ const login = ({ onLoginSuccess }) => {
               onChange={(event) => setPassword(event.target.value)}
             />
 
-            <button
-              type="submit"
-              className="mt-6 p-2 border-2 w-full rounded-2xl bg-[#D27D2D]  text-white text-balance hover:text-black hover:bg-white cursor-pointer"
-            >
-              Login
-            </button>
+            <CustomButton type="submit">Login</CustomButton>
             <p className="text-sm mt-3">
               New User? Please{" "}
               <Link className="text-base  hover:border-b-2" to="/register">
