@@ -1,5 +1,4 @@
 import React from "react";
-import welcomeImage from "../assets/images/welcomeImg.png";
 import { useNavigate } from "react-router-dom";
 
 const home = ({ loggedIn }) => {
@@ -16,10 +15,9 @@ const home = ({ loggedIn }) => {
 
   return (
     <div
-      className="min-h-screen w-full bg-cover bg-center bg-no-repeat relative flex items-center justify-center"
-      style={{ backgroundImage: `url(${welcomeImage})` }}
+      className="min-h-screen w-full bg-[#D27D2D] relative flex items-center justify-center"
     >
-      <div className="absolute top-80 bg-[rgba(0,48,24,0.95)] p-4 sm:p-8 rounded-lg text-white w-11/12 min-w-[280px] max-w-xl text-center shadow-lg">
+      <div className="absolute top-50 bg-[rgba(0,48,24,0.95)] p-4 sm:p-8 rounded-lg text-white w-11/12 min-w-[280px] max-w-xl text-center shadow-lg">
         <p className="font-light text-base leading-relaxed tracking-wide mb-4 font-poppins text-left">
           <span className="text-xl sm:text-2xl font-semibold block mb-4 text-center">
             Welcome to Cookie Clicker Game 🍪
