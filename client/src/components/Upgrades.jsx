@@ -4,8 +4,8 @@ export default function Upgrades({
   doubleClickLevel,
   autoClicklevel,
 }) {
-  const doubleClickCost = 10 * 4 ** doubleClickLevel;
-  const autoClickerCost = 20;
+  const doubleClickCost = 100 * 4 ** doubleClickLevel;
+  const autoClickerCost = 200;
 
   const buyUpgrade = (upgrade) => {
     if (clickCount >= upgrade.cost) {
