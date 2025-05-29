@@ -73,13 +73,9 @@ export default function CookieGame({
   ]);
 
   const handleClick = () => {
-    if (doubleClickLevel === 0 && autoClickerLevel === 0) {
-      setClickCount((prevCount) => prevCount + 1);
-    } else {
-      setClickCount(
-        (prevCount) => prevCount + doubleClickMultiplier + autoClickerLevel
-      );
-    }
+    setClickCount(
+      (prevCount) => prevCount + doubleClickMultiplier + autoClickerLevel
+    );
   };
 
   const handleUpgrade = (upgrade) => {
@@ -106,9 +102,15 @@ export default function CookieGame({
     if (!autoClickerActive) return;
 
     const interval = setInterval(() => {
-      setClickCount((prev) => {
-        return prev + doubleClickMultiplier + autoClickerLevel;
-      });
+      if (doubleClickLevel > 0) {
+        setClickCount((prev) => {
+          return prev + doubleClickMultiplier + autoClickerLevel;
+        });
+      } else {
+        setClickCount((prev) => {
+          return prev + autoClickerLevel;
+        });
+      }
     }, 1000);
 
     return () => clearInterval(interval);
@@ -116,7 +118,6 @@ export default function CookieGame({
 
   return (
     <div className="text-center p-8">
-      {autoClickerLevel}
       <CookieClicker
         onCookieClick={handleClick}
         count={clickCount}
