@@ -54,3 +54,18 @@ This project is a Cookie Clicker game built with React and Tailwind CSS. It feat
 
 * **Optional Playback:** Users can toggle background music on or off via a music icon in the navigation bar, offering a customizable audio experience.
 * **Freesound Integration:** When enabled, the application seamlessly integrates with the Freesound API to fetch and play background music, creating a more immersive and engaging atmosphere for the user.
+
+---
+
+### Responsive Design
+
+* **Mobile-Friendly:** The application is fully responsive and adapts seamlessly to different screen sizes, including desktops, tablets, and smartphones.
+* **Tailwind CSS:** Responsive utility classes from Tailwind CSS ensure that layouts, buttons, and game elements remain user-friendly and visually appealing on all devices.
+
+---
+
+### Home Page
+
+* **Welcoming Experience:** The `home.jsx` component provides a visually appealing and responsive landing page that introduces users to the Cookie Clicker game.
+* **Quick Access:** Users can easily start playing or are redirected to log in, depending on their authentication status.
+
