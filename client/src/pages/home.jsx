@@ -35,9 +35,8 @@ const home = ({ loggedIn }) => {
           to awesome features.
         </p>
         <p className="text-lg mb-3 leading-relaxed">
-          Accumulate cookies to unlock powerful upgrades, boost your clicking
-          speed, and discover golden cookies that can be redeemed for real-world
-          treats!
+          Collect more cookies to unlock powerful upgrades and discover click-boosters 
+          that supercharge your tapping frenzy.
         </p>
         <p className="text-lg mb-6 leading-relaxed">
           Start clicking. Start earning. Start enjoying!
