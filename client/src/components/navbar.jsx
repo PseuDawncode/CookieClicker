@@ -18,7 +18,7 @@ const Navbar = ({ loggedIn, username, profilePic, onLogout }) => {
     <nav className="bg-amber-800 p-4 sm:p-5 flex justify-between items-center">
       <h1 className="flex text-white sm:text-2xl md:text-3xl font-bold cursor-pointer">
         {" "}
-        <Link className="ml-9 sm:p-4 text-yellow-400 " to="/">
+        <Link className="md:ml-9 md:p-4 ml-3 text-yellow-400 " to="/">
           Cookie Clicker
         </Link>
       </h1>

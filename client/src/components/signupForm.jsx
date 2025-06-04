@@ -91,7 +91,7 @@ const signup = () => {
   return (
     <>
       <div className="flex flex-row flex-wrap justify-center items-center">
-        <div className="md:w-1/3 h-2/3 flex-row m-20 p-10 border-2 rounded-2xl bg-[#c9a685]">
+        <div className="md:w-1/3 md:h-2/3 w-full h-full flex-row md:m-20 md:p-10 m-5 p-2 border-2 rounded-2xl bg-[#c9a685]">
           <h2 className="text-2xl font-bold text-center">Register</h2>
           {errorMessage.length > 0 && (
             <div className="text-sm text-red-500">
@@ -129,7 +129,7 @@ const signup = () => {
               onChange={(event) => setPassword(event.target.value)}
             />
 
-            <ul className="list-disc text-xs mt-3">
+            <ul className="list-disc text-xs mt-3 w-full p-2">
               <li>Should contain atleast 8 characters</li>
               <li>
                 Should contain atleast one uppercase,number and special
