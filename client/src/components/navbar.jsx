@@ -18,7 +18,7 @@ const Navbar = ({ loggedIn, username, profilePic, onLogout }) => {
     <nav className="bg-amber-800 p-4 sm:p-5 flex justify-between items-center">
       <h1 className="flex text-white sm:text-2xl md:text-3xl font-bold cursor-pointer">
         {" "}
-        <Link className="ml-9 sm:p-4" to="/">
+        <Link className="md:ml-9 md:p-4 ml-3 text-yellow-400 " to="/">
           Cookie Clicker
         </Link>
       </h1>
@@ -47,12 +47,12 @@ const Navbar = ({ loggedIn, username, profilePic, onLogout }) => {
         {!loggedIn ? (
           <>
             <Link to="/login">
-              <button className="px-1 py-2 mx-3 w-15 text-sm  sm:w-23 md:w-30 rounded text-white cursor-pointer bg-[#D27D2D] hover:text-black hover:bg-white">
+              <button className="px-1 py-2 mx-3 w-15 text-sm md:text-lg sm:w-23 md:w-30 bg-amber-800 text-yellow-400 font-semibold md:py-2 md:px-6 rounded-full border border-yellow-400 shadow-md hover:bg-yellow-300 hover:text-[#003018] transition-colors duration-300">
                 Login
               </button>
             </Link>
             <Link to="/register">
-              <button className="px-1 py-2 w-18 text-sm  sm:w-23 md:w-30 rounded text-white bg-[#D27D2D] cursor-pointer hover:text-black hover:bg-white">
+              <button className="px-1 py-2 w-18 text-sm md:text-lg sm:w-23 md:w-30 bg-amber-800 text-yellow-400 font-semibold md:py-2 md:px-6 rounded-full border border-yellow-400 shadow-md hover:bg-yellow-300 hover:text-[#003018] transition-colors duration-300">
                 Register
               </button>
             </Link>
@@ -71,10 +71,9 @@ const Navbar = ({ loggedIn, username, profilePic, onLogout }) => {
             <Link to="/">
               <button
                 onClick={handleLogoutAndNavigate}
-                className="px-1 py-2 mx-3 w-15 text-sm sm:w-23 md:w-30 rounded text-white cursor-pointer"
-                style={{ backgroundColor: "#D27D2D" }}
+                className="px-1 py-2 mx-3 w-20 text-sm sm:w-23 rounded md:w-30 bg-amber-800 text-yellow-400 font-semibold md:py-2 md:text-lg md:px-6 md:rounded-full border border-yellow-400 shadow-md hover:bg-yellow-300 hover:text-[#003018] transition-colors duration-300"
               >
-                Logout
+                Log Out
               </button>
             </Link>
           </>

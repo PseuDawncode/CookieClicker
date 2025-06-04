@@ -48,7 +48,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter basename="/CookieClicker">
+      <BrowserRouter basename="/CookieClicker/">
         <Nav
           loggedIn={loggedIn}
           username={loggedInUsername}
@@ -68,6 +68,7 @@ function App() {
                     loggedInUser.autoClickerActive || false
                   }
                   onSaveGame={handleSaveGameProgress}
+                  initialAutoClickerLevel={loggedInUser.autoClickerLevel || 0}
                 />
               ) : (
                 <Home loggedIn={loggedIn} />

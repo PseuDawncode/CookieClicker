@@ -6,7 +6,7 @@ const CustomButton = ({ children, onClick, type = "button" }) => {
     <button
       type={type}
       onClick={onClick}
-      className="w-[269px] h-[29px] bg-[#D27D2D] text-white rounded hover:opacity-90 transition"
+      className=" w-full mt-5 bg-amber-800 text-yellow-400 font-semibold md:py-2 md:px-6 rounded-full border border-yellow-400 shadow-md hover:bg-yellow-300 hover:text-[#003018] transition-colors duration-300 cursor-pointer"
     >
       {children}
     </button>
