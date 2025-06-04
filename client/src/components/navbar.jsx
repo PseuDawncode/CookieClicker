@@ -5,7 +5,7 @@ import musicImage from "../assets/images/music.png";
 import noMusicImage from "../assets/images/nomusic.png";
 
 const Navbar = ({ loggedIn, username, profilePic, onLogout }) => {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const navigate = useNavigate();
   const startMusic = () => {
     setIsPlaying(!isPlaying);
