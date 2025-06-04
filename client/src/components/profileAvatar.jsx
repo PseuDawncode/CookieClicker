@@ -3,7 +3,7 @@ import CustomButton from "./customBtn";
 
 const profileAvatar = ({ onAvatarSelect }) => {
   const [avatarArray, setAvatarArray] = useState([]);
-  const [avatarSelected, setAvatarSelected] = useState([]);
+  const [avatarSelected, setAvatarSelected] = useState([0]);
   const numberOfAvatars = 6;
 
   useEffect(() => {

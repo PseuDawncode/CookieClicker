@@ -42,7 +42,7 @@ export default function CookieGame({
   useEffect(() => {
     // Only attempt to save if the onSaveGame function is provided
     if (onSaveGame) {
-      // Clear any existing timeout to ensure only one save operation is pending
+      // Clears any existing timeout to ensure only one save operation is pending
       if (saveTimeoutRef.current) {
         clearTimeout(saveTimeoutRef.current);
       }
