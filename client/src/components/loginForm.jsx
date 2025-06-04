@@ -30,7 +30,7 @@ const login = ({ onLoginSuccess }) => {
   return (
     <>
       <div className="flex flex-row flex-wrap justify-center items-center ">
-        <div className="md:w-1/3 md:h-2/3 flex-row md:m-20 md:p-10 border-2 w-2/3 h-full m-5 p-2 rounded-2xl bg-[#c9a685]">
+        <div className="md:w-1/3 md:h-2/3 flex-row md:m-20 md:p-10 border-2 w-full h-full m-5 p-2 rounded-2xl bg-[#c9a685]">
           <h2 className="text-2xl font-bold text-center">Login</h2>
           {errorMessage && (
             <div className="text-sm text-red-500 bg-amber-100">
