@@ -129,7 +129,7 @@ const signup = () => {
               onChange={(event) => setPassword(event.target.value)}
             />
 
-            <ul className="list-disc text-xs mt-3">
+            <ul className="list-disc text-xs mt-3 w-full p-2">
               <li>Should contain atleast 8 characters</li>
               <li>
                 Should contain atleast one uppercase,number and special

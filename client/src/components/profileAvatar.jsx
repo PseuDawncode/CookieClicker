@@ -38,8 +38,8 @@ const profileAvatar = ({ onAvatarSelect }) => {
     }
   };
   return (
-    <div className="flex flex-col items-center my-4">
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+    <div className="flex flex-col items-center my-4 w-full h-fit">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
         {avatarArray.map((svg, index) =>
           svg ? (
             <div
@@ -54,7 +54,7 @@ const profileAvatar = ({ onAvatarSelect }) => {
             >
               <div
                 dangerouslySetInnerHTML={{ __html: svg }}
-                className="sm:w-15 sm:h-15 md:w-24 md:h-24 hover:opacity-60 hover:rounded-full"
+                className="w-15 h-15 md:w-24 md:h-24 hover:opacity-60 hover:rounded-full"
               />
             </div>
           ) : (
